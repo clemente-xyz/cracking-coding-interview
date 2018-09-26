@@ -103,13 +103,76 @@ def binary_search_in_matrix(matrix, target):
 
 # Problem 4:
 '''
-Given a matrix in which each row and each column is sorted, write a method to find an element in it.
-Assumptions:
-- Rows are sorted left to right in ascending order Columns are sorted top to bottom in ascending order
-- Matrix is of size MxN
+For the purposes of this challenge, we define a binary tree to be a binary search tree with the 
+following ordering requirements:
+
+1. The  value of every node in a node's left subtree is less than the data value of that node.
+2. The  value of every node in a node's right subtree is greater than the data value of that node.
+
+Given the root node of a binary tree, can you determine if it's also a binary search tree?
+
+Input Format - A pointer to the root of a binary tree.
+
+Output Format - A boolean denoting whether or not the binary tree is a binary search tree.
+
+Constraints - 0 <= data <= 10^4
+
 '''
 
-matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12], [13, 14, 15]]
-target = 11
 
-print(binary_search_in_matrix(matrix, target))
+def check_binary_search_tree_(root):
+    return _check_binary_search_tree(root, -1, 10001)
+
+
+def _check_binary_search_tree(node, min, max):
+    if node is None:
+        return True
+    else:
+        if node.data >= max or node.data <= min:
+            return False
+
+        return _check_binary_search_tree(node.left, min, node.data) and _check_binary_search_tree(node.right, node.data, max)
+
+
+# Problem 5:
+'''
+Anna loves graph theory! She has a tree where each vertex is numbered from 1 to n, and each contains a 
+data value. The sum of a tree is the sum of all its nodes' data values. If she cuts an edge in her tree, 
+she forms two smaller trees. The difference between two trees is the absolute value between their sums.
+
+Given a tree, determine which edge to cut so that the resulting trees have a minimal difference between 
+them, then return that difference.
+
+            100
+             | (1,2)
+            200
+     (2,5) /   \ (2,3)
+         100   100
+  (4,5) /   \ (5,6)
+      500   600
+         
+'''
+
+
+# input: subtree / output: sum of subtree nodes
+def find_and_sum_subtree_nodes(root_idx, edges, nodes, sum):
+    for i in edges:
+        if i[0] == root_idx or i[1] == root_idx:
+
+
+def tree_min_diff_in_cut(nodes, edges):
+    differences = []
+
+    for e in edges:
+        left_tree_sum = find_and_sum_subtree_nodes(e[0], edges, nodes)
+        right_tree_sum = find_and_sum_subtree_nodes(e[1], edges, nodes)
+        difference = abs(left_tree_sum-right_tree_sum)
+        differences.append(difference)
+
+    return min(differences)
+
+
+nodes = [100, 200, 100, 500, 100, 600]
+edges = [(1, 2), (2, 3), (2, 5), (4, 5), (5, 6)]
+
+print(tree_min_diff_in_cut(nodes, edges))

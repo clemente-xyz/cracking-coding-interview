@@ -59,3 +59,13 @@ class BinaryTree():
 
         else:
             print("Empty tree")
+
+
+tree = BinaryTree()
+tree.insert_node(9)
+tree.insert_node(6)
+tree.insert_node(12)
+tree.insert_node(4)
+tree.insert_node(3)
+
+tree.show_me()

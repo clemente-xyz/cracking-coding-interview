@@ -8,9 +8,9 @@ The computer science topics addressed in this repo are:
 
 - Algorithms and complexity (sorting and seaching).
 - Trees
-- Graphs (pending)
-- Other data structures (arrays, linked lists, stacks and queues) (pending)
-- Recursion (pending)
+- Graphs
+- Other data structures (arrays, linked lists, stacks and queues)
+- Recursion
 - OS (pending)
 
 ## Installing and running
