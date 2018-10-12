@@ -70,8 +70,4 @@ def _bfs(node):
 
         node = exploring_queue[0]
 
-        for i in exploring_queue:
-            print(i.data)
-        print("\n")
-
         _bfs(node)
