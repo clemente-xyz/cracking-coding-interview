@@ -1,4 +1,7 @@
+
+
 import collections
+from helpers import find_unvisited_neighbors_inorder, mark_as_visited
 
 # BFS pseudo code:
 '''
@@ -28,7 +31,8 @@ _bfs(node):
 '''
 
 # BFS code:
-'''
+
+
 def bfs(node1):
     global exploring_queue, visited_nodes_arr
 
@@ -40,12 +44,14 @@ def bfs(node1):
 
     _bfs(node1)
 
+    return visited_nodes_arr
+
 
 def _bfs(node):
     global exploring_queue, visited_nodes_arr
 
     if len(exploring_queue) == 0:
-        return exploring_queue
+        return visited_nodes_arr
 
     else:
         exploring_queue.popleft()
@@ -53,13 +59,19 @@ def _bfs(node):
         unvisited_neighbors = find_unvisited_neighbors_inorder(node)
         visited_neighbors = mark_as_visited(unvisited_neighbors)
 
-        add_nodes_to_queue(visited_neighbors)
-        add_nodes_to_arr(visited_neighbors)
+        for i in visited_neighbors:
+            exploring_queue.append(i)
 
-        node = first_node_at_queue(exploring_queue)
+        for i in visited_neighbors:
+            visited_nodes_arr.append(i)
+
+        if len(exploring_queue) == 0:
+            return visited_nodes_arr
+
+        node = exploring_queue[0]
+
+        for i in exploring_queue:
+            print(i.data)
+        print("\n")
 
         _bfs(node)
-
-
-print(bfs(node1))
-'''
