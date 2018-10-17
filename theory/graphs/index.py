@@ -14,10 +14,10 @@ bfs(node):
 
 _bfs(node):
     if exploring_queue is empty, then:
-        finish
+        return visited_nodes_arr
     
     else, then:
-        remove_node(exploring_queue)
+        remove node from exploring_queue
 
         set unvisited_neighbors_arr as find_unvisited_neighbors_inorder(node)
         set unvisited_neighbors_arr as visited
@@ -71,3 +71,36 @@ def _bfs(node):
         node = exploring_queue[0]
 
         _bfs(node)
+
+
+# DFS pseudo code:
+'''
+dfs(node):
+    set exploring_stack with node init
+    set visited_nodes_arr with node init
+    set node as visited
+
+    _dfs(node)
+
+_dfs(node):
+    if exploring_stack is empty, then:
+        return visited_nodes_arr
+    
+    else, then:
+        set unvisited_neighbors_arr as find_unvisited_neighbors(node)
+
+        if unvisited_neighbors_arr is empty, then:
+            remove node from exploring_stack
+
+            set node as last node of exploring_stack
+        
+        else, then:
+            set node as min of unvisited_neighbors_arr
+            set node as visited
+
+            add node to exploring_stack
+            add node to visited_nodes_arr
+        
+        _dfs(node)
+
+'''
