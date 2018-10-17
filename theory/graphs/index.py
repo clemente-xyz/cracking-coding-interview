@@ -57,13 +57,13 @@ def _bfs(node):
         exploring_queue.popleft()
 
         unvisited_neighbors = find_unvisited_neighbors_inorder(node)
-        visited_neighbors = mark_as_visited(unvisited_neighbors)
 
-        for i in visited_neighbors:
-            exploring_queue.append(i)
+        if len(unvisited_neighbors) != 0:
+            visited_neighbors = mark_as_visited(unvisited_neighbors)
 
-        for i in visited_neighbors:
-            visited_nodes_arr.append(i)
+            for i in visited_neighbors:
+                exploring_queue.append(i)
+                visited_nodes_arr.append(i)
 
         if len(exploring_queue) == 0:
             return visited_nodes_arr
@@ -87,12 +87,11 @@ _dfs(node):
         return visited_nodes_arr
 
     else, then:
+        set node as last node of exploring_stack
         set unvisited_neighbors_arr as find_unvisited_neighbors(node)
 
         if unvisited_neighbors_arr is empty, then:
             remove node from exploring_stack
-
-            set node as last node of exploring_stack
 
         else, then:
             set node as min of unvisited_neighbors_arr
