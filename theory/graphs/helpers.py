@@ -35,6 +35,22 @@ def find_unvisited_neighbors_inorder(node):
     return nodes_arr_quicksort(unvisited_neighbors)
 
 
+def find_unvisited_neighbors(node):
+    unvisited_neighbors = []
+
+    for i in node.neighbors:
+        if i.visited == False:
+            unvisited_neighbors.append(i)
+
+    return unvisited_neighbors
+
+
+def find_min_neighbor(unvisited_neighbors):
+    unvisited_neighbors_sorted = nodes_arr_quicksort(unvisited_neighbors)
+
+    return unvisited_neighbors_sorted[0]
+
+
 def mark_as_visited(unvisited_neighbors):
     visited_neighbors = []
 
