@@ -158,16 +158,18 @@ them, then return that difference.
 def find_and_sum_subtree_nodes(root_idx, edges, nodes, sum):
     for i in edges:
         if i[0] == root_idx or i[1] == root_idx:
+            pass
 
 
 def tree_min_diff_in_cut(nodes, edges):
     differences = []
 
     for e in edges:
-        left_tree_sum = find_and_sum_subtree_nodes(e[0], edges, nodes)
-        right_tree_sum = find_and_sum_subtree_nodes(e[1], edges, nodes)
-        difference = abs(left_tree_sum-right_tree_sum)
-        differences.append(difference)
+        pass
+        #left_tree_sum = find_and_sum_subtree_nodes(e[0], edges, nodes)
+        #right_tree_sum = find_and_sum_subtree_nodes(e[1], edges, nodes)
+        #difference = abs(left_tree_sum-right_tree_sum)
+        # differences.append(difference)
 
     return min(differences)
 
