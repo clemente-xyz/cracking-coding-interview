@@ -115,22 +115,29 @@ def set_node_childs_inorder(node):
     return childs
 
 
-# Testing code:
-'''
-node0 = Node(0)
-node1 = Node(1)
-node2 = Node(2)
-node3 = Node(3)
-node4 = Node(4)
-node5 = Node(5)
-node6 = Node(6)
-node7 = Node(7)
+def initialize_binary_tree(root_node_data, nodes_data, edges):
+    nodes_arr = []
+    nodes_dic = {}
 
-binary_tree = BinaryTree()
+    for i in nodes_data:
+        node = Node(i)
 
-binary_tree.add_node(node5)
-binary_tree.add_node(node2, node5, "left")
-binary_tree.add_node(node6, node5, "right")
+        nodes_arr.append(node)
 
-binary_tree.show_me_in_bfs()
-'''
+        nodes_dic[i] = node
+
+        if i == root_node_data:
+            root_node = node
+
+    binary_tree = BinaryTree()
+
+    binary_tree.add_node(root_node)
+
+    for i in edges:
+        node = nodes_dic[i[0]]
+        parent = nodes_dic[i[1]]
+        position = i[2]
+
+        binary_tree.add_node(node, parent, position)
+
+    return binary_tree

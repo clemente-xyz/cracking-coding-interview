@@ -1,15 +1,9 @@
-class Test():
-    def __init__(self):
-        self.data = 3
+dic = {}
 
-    def show(self):
-        show_me(self.data)
+letters = ["a", "b", "c"]
+numbers = [1, 2, 3]
 
+for i, j in zip(letters, numbers):
+    dic[i] = j
 
-def show_me(data):
-    print(data)
-
-
-test = Test()
-
-test.show()
+print(dic["a"])
