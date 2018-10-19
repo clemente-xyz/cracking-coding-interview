@@ -141,3 +141,11 @@ def initialize_binary_tree(root_node_data, nodes_data, edges):
         binary_tree.add_node(node, parent, position)
 
     return binary_tree
+
+
+def find_binary_tree_height(node):
+    if node == None:
+        return 0
+
+    return 1 + max(find_binary_tree_height(node.left_child),
+                   find_binary_tree_height(node.right_child))
