@@ -1,3 +1,5 @@
+from helpers import merge_inorder
+
 # Linear sort pseudo code:
 
 '''
@@ -94,3 +96,18 @@ merge_sort(arr):
 
     return ordered_merge
 '''
+
+
+def merge_sort(arr):
+    if len(arr) == 1 or len(arr) == 0:
+        return arr
+
+    left_middle_arr = merge_sort(arr[:(len(arr)//2)])
+    right_middle_arr = merge_sort(arr[(len(arr)//2):])
+
+    ordered_merge = merge_inorder(left_middle_arr, right_middle_arr)
+
+    return ordered_merge
+
+
+print(merge_sort([0, 3, 2, 7, 1, 6]))
