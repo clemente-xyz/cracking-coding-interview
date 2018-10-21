@@ -1,4 +1,4 @@
-# Linear sort pseudo-algorithm:
+# Linear sort pseudo code:
 
 '''
 linear_sort(arr):
@@ -13,7 +13,7 @@ linear_sort(arr):
             
 '''
 
-# Linear sort algorithm:
+# Linear sort code:
 
 
 def linear_sort(arr):  # O(n^2)
@@ -29,56 +29,68 @@ def linear_sort(arr):  # O(n^2)
         return arr
 
 
-# Quick sort pseudo-algorithm:
+# Quick sort pseudo code:
 
 
 '''
 quick_sort(arr):
-    if length(arr)=1, then:
+    if length(arr) is 1 or 0, then:
         return arr
-    
-    else, then:
-        set pivot as arr[lenght(arr)-1]
-        set first_bigger_idx as 0
-        
-        for i from 0 to length(arr)-1, do:
-            if arr[i]<=pivot, then:
-                swap(arr[first_bigger_idx], arr[i])
-                increment first_bigger_idx in 1
-        
-        swap(arr[first_bigger_idx], arr[lenght(arr)-1])
-        
-        set left_side_sorted as quick_sort(arr[0..pivot-1])
-        set right_side_sorted as quick_sort(arr[pivot..arr[lenght(arr)]])
 
-        return left_side_sorted+right_side_sorted
+    set pivot as arr[lenght(arr)-1]
+    set first_bigger_idx as 0
+    
+    for i from 0 to length(arr)-1, do:
+        if arr[i]<=pivot, then:
+            swap(arr[first_bigger_idx], arr[i])
+            increment first_bigger_idx in 1
+    
+    swap(arr[first_bigger_idx], arr[lenght(arr)-1])
+    
+    set left_side_sorted as quick_sort(arr[0..pivot-1])
+    set right_side_sorted as quick_sort(arr[pivot..arr[lenght(arr)]])
+
+    return left_side_sorted+right_side_sorted
     
 '''
 
-# Quick sort algorithm:
+# Quick sort code:
 
 
 def quick_sort(arr):  # O(log(n))
     if len(arr) == 1 or len(arr) == 0:
         return arr
 
-    else:
-        pivot = arr[-1]
-        j = 0
+    pivot = arr[-1]
+    j = 0
 
-        for i in range(0, len(arr)):
-            if arr[i] < pivot:
-                arr[j], arr[i] = arr[i], arr[j]
-                j += 1
+    for i in range(0, len(arr)):
+        if arr[i] < pivot:
+            arr[j], arr[i] = arr[i], arr[j]
+            j += 1
 
-        arr[j], arr[-1] = arr[-1], arr[j]
+    arr[j], arr[-1] = arr[-1], arr[j]
 
-        left_sorted_arr = quick_sort(arr[:j])
-        right_sorted_arr = quick_sort(arr[j+1:])
-        left_sorted_arr.append(arr[j])
+    left_sorted_arr = quick_sort(arr[:j])
+    right_sorted_arr = quick_sort(arr[j+1:])
+    left_sorted_arr.append(arr[j])
 
-        return left_sorted_arr + right_sorted_arr
+    return left_sorted_arr + right_sorted_arr
 
 
-arr = [9, 0, 1, 12, 0, 3]
-print(quick_sort(arr))
+# Merge sort pseudo code:
+'''
+merge_sort(arr):
+    if length(arr) is 0 or 1, then:
+        return arr
+    
+    set left_middle_arr as left side of arr/2
+    set right_middle_arr as right side of arr/2
+
+    call merge_sort(left_middle_arr)
+    call merge_sort(right_middle_arr)
+
+    set ordered_merge as order_and_merge(left_middle_arr, right_middle_arr)
+
+    return ordered_merge
+'''
