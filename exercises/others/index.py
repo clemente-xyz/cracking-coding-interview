@@ -96,4 +96,31 @@ def _super_digit(p):
     return _super_digit(str(j))
 
 
-print(super_digit(9875, 4))
+# Problem 4
+'''
+Write a program to calculate every n'th Fibo number with a time 
+complexity less than O(2^n).
+'''
+
+
+def fibonacci(n):  # Time complexity: O(n)
+    global memory_dic
+
+    memory_dic = {}
+
+    return _fibonacci(n)
+
+
+def _fibonacci(n):
+    global memory_dic
+
+    if n == 0:
+        return 0
+
+    elif n == 1:
+        return 1
+
+    elif n not in memory_dic.keys():
+        memory_dic[n] = _fibonacci(n-1) + _fibonacci(n-2)
+
+    return memory_dic[n]
